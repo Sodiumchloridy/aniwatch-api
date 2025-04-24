@@ -45,6 +45,22 @@ jobs:
           path: dist/
           retention-days: 7
       
+      # UPLOAD TEST ARTIFACTS
+      - name: Upload test artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-artifacts
+          path: html/
+          retention-days: 7
+      
+      # UPLOAD COVERAGE ARTIFACTS
+      - name: Upload test coverage artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-coverage-artifacts
+          path: coverage/
+          retention-days: 7
+      
       # DEPLOYMENT (only on main branch)
       - name: Deploy to production
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
