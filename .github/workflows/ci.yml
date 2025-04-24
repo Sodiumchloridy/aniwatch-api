@@ -28,7 +28,7 @@ jobs:
         
       - name: Install coverage dependency
         run: npm install --no-save @vitest/coverage-v8@2.1.9
-      
+
       # BUILD
       - name: Build project
         run: npm run build
@@ -43,14 +43,6 @@ jobs:
         with:
           name: build-artifacts
           path: dist/
-          retention-days: 7
-      
-      # UPLOAD TEST ARTIFACTS
-      - name: Upload test artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-artifacts
-          path: html/
           retention-days: 7
       
       # UPLOAD COVERAGE ARTIFACTS
