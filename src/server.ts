@@ -40,7 +40,10 @@ if (ISNT_PERSONAL_DEPLOYMENT) {
 }
 
 app.use("/", serveStatic({ root: "public" }));
-app.get("/health", (c) => c.text("daijoubu", { status: 200 }));
+app.get("/health", (c) => c.json({ 
+    status: "daijoubu",
+    timestamp: new Date().toISOString()
+}, { status: 200 }));
 app.get("/v", async (c) =>
     c.text(
         `v${"version" in pkgJson && pkgJson?.version ? pkgJson.version : "-1"}`

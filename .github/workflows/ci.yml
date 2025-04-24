@@ -1,0 +1,58 @@
+name: "CI/CD Pipeline"
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build_test_deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # CHECKOUT
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      # SETUP
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.x"
+      
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Install coverage dependency
+        run: npm install --no-save @vitest/coverage-v8@2.1.9
+      
+      # BUILD
+      - name: Build project
+        run: npm run build
+      
+      # UPLOAD BUILD ARTIFACTS
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: dist/
+          retention-days: 7
+      
+      # RUN TESTS
+      - name: Run tests with coverage
+        run: npm test -- --coverage
+      
+      # DEPLOYMENT (only on main branch)
+      - name: Deploy to production
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          # Trigger deployment to Render or other service
+          curl --request POST \
+            --url https://api.render.com/v1/services/${{ secrets.RENDER_API_SERVICE_ID }}/deploys \
+            --header 'accept: application/json' \
+            --header 'authorization: Bearer ${{ secrets.RENDER_API_KEY }}' \
+            --header 'content-type: application/json' \
+            --data '{ "clearCache": "clear" }'
