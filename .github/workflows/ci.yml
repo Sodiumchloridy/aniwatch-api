@@ -32,6 +32,10 @@ jobs:
       # BUILD
       - name: Build project
         run: npm run build
+
+      # RUN TESTS
+      - name: Run tests with coverage
+        run: npm test
       
       # UPLOAD BUILD ARTIFACTS
       - name: Upload build artifacts
@@ -40,10 +44,6 @@ jobs:
           name: build-artifacts
           path: dist/
           retention-days: 7
-      
-      # RUN TESTS
-      - name: Run tests with coverage
-        run: npm test
       
       # DEPLOYMENT (only on main branch)
       - name: Deploy to production
