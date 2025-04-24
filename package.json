@@ -10,7 +10,7 @@
     "build": "tsc -p tsconfig.json",
     "vercel-build": "echo \"Hello\"",
     "prepare": "husky install",
-    "test": "vitest run --config vitest.config.ts",
+    "test": "vitest run --config vitest.config.ts --reporter=html",
     "healthcheck": "curl -f http://localhost:4000/health",
     "lint": "prettier --cache --write .",
     "lint:ci": "prettier --cache --check ."
