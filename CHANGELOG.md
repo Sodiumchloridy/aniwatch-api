@@ -1,3 +1,7 @@
+## [3.2.2](https://github.com/ghoshRitesh12/aniwatch-api/compare/v3.2.1...v3.2.2) (2025-04-24)
+
+
+
 ## [3.2.1](https://github.com/ghoshRitesh12/aniwatch-api/compare/v3.2.0...v3.2.1) (2025-04-24)
 
 
@@ -26,10 +30,6 @@
 ### Features
 
 * **getNextEpisodeSchedule:** add `/anime/:animeId/next-episode-schedule` endpoint ([f5cd341](https://github.com/ghoshRitesh12/aniwatch-api/commit/f5cd3415d8134da1ab1e3b3f8f9be6b5212aa353))
-
-
-
-## [2.11.2](https://github.com/ghoshRitesh12/aniwatch-api/compare/v2.11.1...v2.11.2) (2025-03-15)
 
 
 
