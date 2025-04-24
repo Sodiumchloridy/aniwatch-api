@@ -1,3 +1,12 @@
+# [3.2.0](https://github.com/ghoshRitesh12/aniwatch-api/compare/v3.1.1...v3.2.0) (2025-04-24)
+
+
+### Bug Fixes
+
+* **tests:** update test command to include HTML reporter and coverage ([c0e5b63](https://github.com/ghoshRitesh12/aniwatch-api/commit/c0e5b636383ce9f10fa47420662eef06f68dea88))
+
+
+
 ## [3.1.1](https://github.com/ghoshRitesh12/aniwatch-api/compare/v3.1.0...v3.1.1) (2025-04-24)
 
 
@@ -26,15 +35,6 @@
 ### Bug Fixes
 
 * **ts build error:** fixed ts build error due to conflicting types ([cb5a467](https://github.com/ghoshRitesh12/aniwatch-api/commit/cb5a4672a8c3b0729bbb4522a3af252f7b336b97))
-
-
-
-# [2.11.0](https://github.com/ghoshRitesh12/aniwatch-api/compare/v2.10.0...v2.11.0) (2024-12-25)
-
-
-### Features
-
-* **`/qtip`:** add new `/qtip` endpoint ([f0acd89](https://github.com/ghoshRitesh12/aniwatch-api/commit/f0acd89d87e5e62c12e20a95225ca9261fefe411))
 
 
 
