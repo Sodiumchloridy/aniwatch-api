@@ -1,13 +1,13 @@
 import { expect, test } from "vitest";
-import { HiAnime } from "aniwatch";
+import app from "../src/server";
 
 const producerName = "toei-animation";
 const page = 2;
 
 // npx vitest run animeProducer.test.ts
 test(`GET /api/v2/hianime/producer/${producerName}?page=${page}`, async () => {
-  const hianime = new HiAnime.Scraper();
-  const data = await hianime.getProducerAnimes(producerName, page);
+  const response = await app.request(`/api/v2/hianime/producer/${producerName}?page=${page}`);
+  const data = (await response.json()).data;
 
   expect(data.animes).not.toEqual([]);
   expect(data.topAiringAnimes).not.toEqual([]);

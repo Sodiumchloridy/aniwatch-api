@@ -25,7 +25,7 @@ const BASE_PATH = "/api/v2" as const;
 const PORT: number = Number(process.env.ANIWATCH_API_PORT) || 4000;
 const ANIWATCH_API_HOSTNAME = process.env?.ANIWATCH_API_HOSTNAME;
 
-export const app = new Hono<{ Variables: AniwatchAPIVariables }>();
+const app = new Hono<{ Variables: AniwatchAPIVariables }>();
 
 app.use(logger());
 app.use(corsConfig);

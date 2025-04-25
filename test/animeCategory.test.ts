@@ -1,13 +1,14 @@
 import { expect, test } from "vitest";
-import { HiAnime } from "aniwatch";
+import app from "../src/server";
 
 const category = "subbed-anime";
 
 // npx vitest run animeCategory.test.ts
 test(`GET /api/v2/hianime/category/${category}`, async () => {
-  const hianime = new HiAnime.Scraper();
-  const data = await hianime.getCategoryAnime(category);
+  const response = await app.request(`/api/v2/hianime/category/${category}`);
+  const data = (await response.json()).data;
 
+  expect(response.status).toEqual(200);
   expect(data.animes).not.toEqual([]);
   expect(data.genres).not.toEqual([]);
   expect(data.top10Animes.today).not.toEqual([]);

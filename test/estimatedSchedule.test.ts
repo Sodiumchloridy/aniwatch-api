@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { HiAnime } from "aniwatch";
+import app from "../src/server";
 
 const padZero = (num: number) => (num < 10 ? `0${num}` : num.toString());
 
@@ -10,8 +10,8 @@ const date = `${d.getFullYear()}-${padZero(d.getMonth() + 1)}-${padZero(
 
 // npx vitest run estimatedSchedule.test.ts
 test(`GET /api/v2/hianime/schedule?date=${date}`, async () => {
-  const hianime = new HiAnime.Scraper();
-  const data = await hianime.getEstimatedSchedule(date);
+  const response = await app.request(`/api/v2/hianime/schedule?date=${date}`);
+  const data = (await response.json()).data;
 
   expect(data.scheduledAnimes).not.toEqual([]);
 });

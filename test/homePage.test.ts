@@ -1,9 +1,9 @@
 import { expect, test } from "vitest";
-import { HiAnime } from "aniwatch";
+import app from "../src/server";
 
 test("GET /api/v2/hianime/home", async () => {
-  const hianime = new HiAnime.Scraper();
-  const data = await hianime.getHomePage();
+  const response = await app.request("/api/v2/hianime/home");
+  const data = (await response.json()).data;
 
   expect(data.spotlightAnimes).not.toEqual([]);
   expect(data.trendingAnimes).not.toEqual([]);

@@ -1,12 +1,12 @@
 import { expect, test } from "vitest";
-import { HiAnime } from "aniwatch";
+import app from "../src/server";
 
 const query = "one piece";
 
 // npx vitest run animeSearchSuggestion.test.ts
 test(`GET /api/v2/hianime/search/suggestion?q=${query}`, async () => {
-  const hianime = new HiAnime.Scraper();
-  const data = await hianime.searchSuggestions(query);
+  const response = await app.request(`/api/v2/hianime/search/suggestion?q=${query}`);
+  const data = (await response.json()).data;
 
   expect(data.suggestions).not.toEqual([]);
 });
