@@ -11,11 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      # CHECKOUT
       - name: Checkout repository
         uses: actions/checkout@v4
       
-      # SETUP
       - name: Setup NodeJS
         uses: actions/setup-node@v4
         with:
@@ -24,11 +22,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # BUILD
       - name: Build project
         run: npm run build
       
-      # UPLOAD BUILD ARTIFACTS
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
