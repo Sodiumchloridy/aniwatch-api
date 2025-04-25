@@ -29,7 +29,7 @@ describe("Error Handling", () => {
 
     // Route that throws a HiAnimeError
     testApp.get("/hianime-error", (c) => {
-        throw new HiAnimeError("Specific HiAnime Issue", "400");
+        throw new HiAnimeError("Specific HiAnime Issue", "500");
     });
 
     testApp.onError(errorHandler);
@@ -40,7 +40,7 @@ describe("Error Handling", () => {
         expect(response.status).toBe(500);
         const data = await response.json();
         expect(data).toEqual({
-            message: "400: Specific HiAnime Issue",
+            message: "500: Specific HiAnime Issue",
             status: 500,
         });
     });
