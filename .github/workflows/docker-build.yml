@@ -28,19 +28,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/ghoshritesh12/aniwatch:${{ github.event.release.tag_name }}
-            ghcr.io/ghoshritesh12/aniwatch:latest
-
-  trigger_deploy:
-    needs: build_docker_image
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Trigger render deploy
-        run: |
-          curl --request POST \
-            --url https://api.render.com/v1/services/${{ secrets.RENDER_API_SERVICE_ID }}/deploys \
-            --header 'accept: application/json' \
-            --header 'authorization: Bearer ${{ secrets.RENDER_API_KEY }}' \
-            --header 'content-type: application/json' \
-            --data '{ "clearCache": "clear" }'
+            ghcr.io/sodiumchloridy/aniwatch:${{ github.event.release.tag_name }}
+            ghcr.io/sodiumchloridy/aniwatch:latest
