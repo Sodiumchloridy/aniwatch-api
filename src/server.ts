@@ -61,7 +61,7 @@ app.notFound(notFoundHandler);
 app.onError(errorHandler);
 
 // NOTE: this env is "required" for vercel deployments
-if (!Boolean(process.env?.ANIWATCH_API_VERCEL_DEPLOYMENT)) {
+if (!Boolean(process.env?.ANIWATCH_API_VERCEL_DEPLOYMENT) && !process.env.VITEST) {
     serve({
         port: PORT,
         fetch: app.fetch,
