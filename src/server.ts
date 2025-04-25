@@ -40,10 +40,15 @@ if (ISNT_PERSONAL_DEPLOYMENT) {
 }
 
 app.use("/", serveStatic({ root: "public" }));
-app.get("/health", (c) => c.json({ 
-    status: "daijoubu",
-    timestamp: new Date().toISOString()
-}, { status: 200 }));
+app.get("/health", (c) =>
+    c.json(
+        {
+            status: "daijoubu",
+            timestamp: new Date().toISOString(),
+        },
+        { status: 200 }
+    )
+);
 app.get("/v", async (c) =>
     c.text(
         `v${"version" in pkgJson && pkgJson?.version ? pkgJson.version : "-1"}`
@@ -61,7 +66,10 @@ app.notFound(notFoundHandler);
 app.onError(errorHandler);
 
 // NOTE: this env is "required" for vercel deployments
-if (!Boolean(process.env?.ANIWATCH_API_VERCEL_DEPLOYMENT) && !process.env.VITEST) {
+if (
+    !Boolean(process.env?.ANIWATCH_API_VERCEL_DEPLOYMENT) &&
+    !process.env.VITEST
+) {
     serve({
         port: PORT,
         fetch: app.fetch,
