@@ -1,10 +1,8 @@
-#
-name: Create and publish a Docker image
+name: "Docker Continuous Deployment"
 
 on:
   push:
     branches: ['release']
-  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
